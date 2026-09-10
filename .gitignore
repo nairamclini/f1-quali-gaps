@@ -23,3 +23,5 @@ data/
 f1_dbt/target/
 f1_dbt/dbt_packages/
 f1_dbt/logs/
+# Gerado pelo dbt: identificador anonimo desta maquina. Estado local, nao codigo.
+f1_dbt/.user.yml
