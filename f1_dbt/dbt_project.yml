@@ -1,0 +1,28 @@
+name: "f1_dbt"
+version: "0.1.0"
+config-version: 2
+
+profile: "f1_quali_gaps"
+
+model-paths: ["models"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  f1_dbt:
+    # staging e intermediate sao view: baratas de reconstruir, sempre frescas,
+    # e nao ocupam espaco no .duckdb.
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: view
+    # marts e table: e o que sera consultado varias vezes pela visualizacao.
+    # Pagar o custo de materializacao uma vez sai mais barato que recalcular
+    # a interpolacao a cada grafico.
+    marts:
+      +materialized: table

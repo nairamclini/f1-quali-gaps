@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: int_interpolate__telemetry_grid
+    description: >
+      Telemetria de cada piloto reamostrada numa grade comum de 501 pontos de
+      posicao relativa (0 a 1), por interpolacao linear. Base de qualquer
+      comparacao entre voltas — ver ADR-0004.
+    columns:
+      - name: grid_point_id
+        data_tests:
+          - unique
+          - not_null
+      - name: driver_code
+        data_tests:
+          - not_null
+      - name: grid_index
+        data_tests:
+          - not_null
+      - name: grid_relative_position
+        data_tests:
+          - not_null
+      - name: elapsed_seconds_at_grid
+        data_tests:
+          - not_null
+
+  - name: int_compute__delta_to_pole
+    description: >
+      Delta de tempo acumulado e por trecho de cada piloto contra o pole
+      sitter, ponto a ponto da volta.
+    columns:
+      - name: grid_point_id
+        data_tests:
+          - unique
+          - not_null
+      - name: driver_code
+        data_tests:
+          - not_null
+      - name: grid_index
+        data_tests:
+          - not_null
+      - name: delta_to_pole_seconds
+        data_tests:
+          - not_null

@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: stg_fastf1__laps
+    description: Uma linha por volta por piloto, tipada e renomeada.
+    columns:
+      - name: lap_id
+        description: Chave natural — season, round, session, piloto, numero da volta.
+        data_tests:
+          - unique
+          - not_null
+      - name: driver_code
+        data_tests:
+          - not_null
+      - name: lap_number
+        data_tests:
+          - not_null
+      - name: season
+        data_tests:
+          - not_null
+
+  - name: stg_fastf1__telemetry
+    description: >
+      Amostras de telemetria da volta mais rapida de cada piloto.
+      Piloto sem volta valida nao aparece — ver ADR-0002.
+    columns:
+      - name: telemetry_sample_id
+        description: Chave natural mais o indice da amostra dentro da volta.
+        data_tests:
+          - unique
+          - not_null
+      - name: driver_code
+        data_tests:
+          - not_null
+      - name: distance_m
+        data_tests:
+          - not_null
+      - name: elapsed_seconds
+        data_tests:
+          - not_null

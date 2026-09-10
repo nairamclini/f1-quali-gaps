@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: dim_driver
+    description: Um piloto por linha, com numero e equipe.
+    columns:
+      - name: driver_code
+        data_tests:
+          - unique
+          - not_null
+      - name: team
+        data_tests:
+          - not_null
+
+  - name: fct_qualifying_gaps
+    description: >
+      Onde cada piloto ganha ou perde tempo para o pole sitter, por trecho de
+      100 m de pista. Modelo de consumo da analise.
+    columns:
+      - name: gap_id
+        data_tests:
+          - unique
+          - not_null
+      - name: driver_code
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_driver')
+                field: driver_code
+      - name: segment_start_m
+        data_tests:
+          - not_null
+      - name: delta_change_seconds
+        data_tests:
+          - not_null
+      - name: cumulative_delta_seconds
+        data_tests:
+          - not_null
+      - name: team
+        data_tests:
+          - not_null

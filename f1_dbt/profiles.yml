@@ -1,0 +1,16 @@
+# profiles.yml vive dentro do projeto (e nao em ~/.dbt/) para que o repositorio
+# clone e rode sem configuracao manual. O dbt procura profiles.yml no diretorio
+# de trabalho atual -- por isso os comandos comecam com `cd f1_dbt`.
+#
+# Nao ha credencial aqui, e nem havera: o DuckDB e um arquivo local. Foi um dos
+# motivos da escolha no ADR-0001.
+
+f1_quali_gaps:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      # Relativo a f1_dbt/. Bate com DUCKDB_PATH em ingest/config.py.
+      # O arquivo e derivado: esta no .gitignore e e reconstruido por `dbt build`.
+      path: "../data/f1_quali_gaps.duckdb"
+      threads: 4

@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+  - name: fastf1
+    description: >
+      Camada raw gravada por ingest/extract.py. Nao e uma tabela no DuckDB:
+      sao arquivos Parquet lidos direto do disco. O `external_location` abaixo
+      e o unico lugar do projeto dbt que conhece o caminho no disco.
+    schema: main
+    tables:
+      - name: laps
+        description: Todas as voltas de todos os pilotos da sessao.
+        meta:
+          external_location: "read_parquet('../data/raw/laps/**/*.parquet', hive_partitioning=true)"
+
+      - name: telemetry
+        description: >
+          Telemetria da volta valida mais rapida de cada piloto (ADR-0002).
+          Piloto sem volta valida nao aparece aqui -- e esperado, nao e perda.
+        meta:
+          external_location: "read_parquet('../data/raw/telemetry/**/*.parquet', hive_partitioning=true)"
