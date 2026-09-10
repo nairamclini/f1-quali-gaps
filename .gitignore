@@ -2,6 +2,9 @@
 .venv/
 .env
 
+# Estado local de ferramenta (Claude Code), nao codigo do projeto
+.claude/
+
 # Python
 __pycache__/
 *.py[cod]
