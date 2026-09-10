@@ -1,0 +1,25 @@
+# Ambiente
+.venv/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Cache FastF1 — grande, reconstituível, nunca versionar
+cache/
+.fastf1_cache/
+
+# Camada raw e warehouse — dado, não código
+data/
+*.parquet
+*.duckdb
+*.duckdb.wal
+
+# dbt
+f1_dbt/target/
+f1_dbt/dbt_packages/
+f1_dbt/logs/
