@@ -72,3 +72,24 @@ de reconciliacao caiu de 0,25 s para **0,01 s**.
   e sempre 0 a 1.
 - O teste de reconciliacao vira a defesa permanente contra regressao deste
   tipo. Ele ja provou que funciona: reprovou a primeira versao do metodo.
+
+## Validacao adicional (11/09/2026)
+
+Testado tambem contra Monaco 2025 (R08), extraido, validado e removido do raw
+em seguida — o projeto continua com uma sessao carregada (ADR-0005). Escolhido
+de proposito por ser o oposto do traçado fluido de Melbourne: curvas fechadas,
+volta de ~3.290 m contra ~5.236 m, com a curva mais lenta do calendario (~60-80
+km/h).
+
+A divergencia do eixo de distancia entre pilotos, a mesma que motivou este ADR,
+e proporcionalmente **maior** em Monaco: 27,0 m de amplitude num circuito mais
+curto da ~0,82% de divergencia relativa, contra ~0,62% em Melbourne (32,4 m em
+~5.236 m). Faz sentido — mais mudancas de direcao por metro de pista acumulam
+mais erro de integracao. Mesmo assim, a reconciliacao final se manteve **exata**
+(erro maximo de 0,0 s entre os 20 pilotos), e o `dbt build` fechou 41/41 sem
+alteracao de codigo.
+
+Conclusao: o metodo de posicao relativa nao so corrigiu o vies medido em
+Melbourne, como se mostra robusto num circuito onde a causa raiz do vies
+(erro de integracao de distancia) e proporcionalmente mais forte. Isso e
+evidencia a favor da decisao, nao so repeticao do mesmo teste.
