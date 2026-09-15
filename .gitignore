@@ -5,6 +5,13 @@
 # Estado local de ferramenta (Claude Code), nao codigo do projeto
 .claude/
 
+# Instrucoes de IA e notas pessoais de planejamento -- nao vao para o GitHub.
+# Ficam so no disco: futuras sessoes de Claude Code continuam lendo normalmente.
+CLAUDE.md
+backlog-automotivo.md
+trilha-A-can-emulado.md
+trilha-B-civic-2000.md
+
 # Python
 __pycache__/
 *.py[cod]
