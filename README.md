@@ -2,7 +2,6 @@
   <img src="https://img.shields.io/badge/python-3.12-blue" alt="Python 3.12">
   <img src="https://img.shields.io/badge/dbt--core-1.12-orange" alt="dbt-core 1.12">
   <img src="https://img.shields.io/badge/DuckDB-1.11-yellow" alt="DuckDB 1.11">
-  <img src="https://img.shields.io/badge/licença-a%20definir-lightgrey" alt="Licença a definir">
 </p>
 
 # f1-quali-gaps
